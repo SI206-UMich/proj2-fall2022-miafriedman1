@@ -25,7 +25,16 @@ def get_listings_from_search_results(html_file):
         ('Loft in Mission District', 210, '1944564'),  # example
     ]
     """
-    pass
+    with open(html_file, "r") as inFile:
+        soup = BeautifulSoup(inFile, "html.parser")
+    tup_list = []
+    print(inFile.prettify())
+    for x in inFile:
+        titles = soup.find_all()
+        rent = soup.find_all("$")
+        listing_id = soup.find
+        tup_list.extend(x)
+    print(titles[0].parent)
 
 
 def get_listing_information(listing_id):
@@ -69,6 +78,9 @@ def get_detailed_listing_database(html_file):
         ...
     ]
     """
+
+
+
     pass
 
 
@@ -135,6 +147,12 @@ def extra_credit(listing_id):
     """
     pass
 
+
+def main():
+    get_listings_from_search_results(listing_1550913.html)
+
+
+main()
 
 class TestCases(unittest.TestCase):
 
