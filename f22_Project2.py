@@ -196,15 +196,13 @@ def check_policy_numbers(data):
 
     """
     discrepancies = []
-    policy_number_pattern_1 = '20\d\d\-00\d\d\d\dSTR'
-    policy_number_pattern_2 = 'STR\-000\d\d\d\d'
+    policy_number_pattern = '20\d{2}-00\d{4}STR|STR\-000\d{4}'
+    # policy_number_pattern_2 = 'STR\-000\d\d\d\d'
     for x in data:
-        if x[3] != "Pending" and x[3] != "Exempt":
-            if x[3] != re.search(policy_number_pattern_1, str(x)) and x[3] != re.search(policy_number_pattern_2, str(x)):
-                discrepancies.append(x[2])
-    print(discrepancies)
+        policy_list = re.findall(policy_number_pattern, x[3])
+        if len(policy_list) == 0 and x[3] != "Pending" and x[3] != "Exempt":
+            discrepancies.append(x[2])
     return discrepancies
-
 
 def extra_credit(listing_id):
     """
