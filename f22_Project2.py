@@ -120,8 +120,6 @@ def get_listing_information(listing_id):
         listing_info_tuple = (policy_num, room_type, bedroom_num)
 
     return listing_info_tuple
-    
-
 
 def get_detailed_listing_database(html_file):
     """
@@ -143,7 +141,6 @@ def get_detailed_listing_database(html_file):
         policy_room_bednum = get_listing_information(x[2])
         full_tup_list.append(x + policy_room_bednum)
     return full_tup_list
-
 
 def write_csv(data, filename):
     """
@@ -174,7 +171,6 @@ def write_csv(data, filename):
     for x in info:
         info_csv.writerow(x)
     f.close()
-
 
 def check_policy_numbers(data):
     """
@@ -314,8 +310,6 @@ class TestCases(unittest.TestCase):
         invalid_listings = check_policy_numbers(detailed_database)
         # check that the return value is a list
         self.assertEqual(type(invalid_listings), list)
-        # check that there is exactly one element in the string
-        # self.assertEqual()
         # check that the element in the list is a string
         self.assertEqual(type(invalid_listings[0]), str)
         self.assertEqual(type(invalid_listings[0]), str)
